@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E7C9806E-800A-A541-F3AD-1C3D3040FF25" name="TBL_BOARD_TYPE">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 01:37:26 UTC</createdTime>
+<commentInRDBMS><![CDATA[게시판 생성관리(notice,gallery등등)]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BOARD_TYPE" id="B5AF08B3-F370-906C-8A45-ED88364C217A">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 02:18:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[게시판타입(NOTICE,GALERY,Q&A)]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BORDER_NAME" id="8789CB1D-91E7-6103-5EC6-FD22C8DA2356">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 02:31:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[한글게시판이름]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOARD_SUN" id="7FBA4A7B-5AA2-AE19-3D4F-754D698838FB">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 02:35:25 UTC</createdTime>
+<commentInRDBMS><![CDATA[게시판 출력 순서]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,11,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2E7EE3BC-4588-D40D-DBD1-343D9708AF2E" name="TBL_BOARD_TYPE_PK">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 02:18:49 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B5AF08B3-F370-906C-8A45-ED88364C217A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

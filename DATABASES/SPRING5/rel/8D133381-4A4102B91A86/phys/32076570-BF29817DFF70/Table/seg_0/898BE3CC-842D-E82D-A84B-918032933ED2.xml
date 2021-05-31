@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="TBL_ATTACH_PK(SAVE_FILE)" directorySegmentName="seg_0" id="898BE3CC-842D-E82D-A84B-918032933ED2">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SAVE_FILE_NAME" id="3EF1A87C-DE1D-7372-088D-E24F73E1E1ED">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="REAL_FILE_NAME" id="77AF883C-55A1-DC2B-C8D5-AF97B6DCB4FA">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BNO" id="CDC7CF2E-C671-B37E-DBA7-09830A36DDFD">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="REG_DATE" id="EC4EFFB7-8A23-F130-EE2A-24EC8851D707">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="TBL_ATTACH_PK(SAVE_FILE)_TBL_BOARD_FK" id="EA64BF4C-0D93-EBEA-03A4-3529EBF7D595">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="TABLE_5_PK" id="175A5CF7-3D03-E3A7-4D32-5AA9D3A29947">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 05:44:30 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>
