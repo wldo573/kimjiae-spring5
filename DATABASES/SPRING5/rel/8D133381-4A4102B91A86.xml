@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Spring5" id="8D133381-BFBC-9001-D403-4A4102B91A86" mainViewID="805DD840-BE92-AB14-BF7A-453CDB656352">
+<createdBy>User</createdBy>
+<createdTime>2021-05-31 01:25:31 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>
