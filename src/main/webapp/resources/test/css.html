@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!--페이지언어설정:U-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습</title>
+    <!--나눔고딕 외부 글꼴 사용하기-->
+    <link rel = "preconnect"href = "https://fonts.gstatic.com">
+<link href = "https://fonts.googleapis.com/css2? family = Nanum + Myeongjo : wght @ 700 & display = swap "rel ="stylesheet ">
+<link rel="stylesheet" href="./style.css">
+<style>
+    /*03선택자 종류
+        범용선택자: *(별표:에스터리스크)
+        태그선택자: h1, h2, p, div, header, footer, atricle
+        class선택자: .class이름 , 특징:중복사용가능 
+        id선택자: #id이름, 특징:중복사용라면 오동작됨.
+        가상선택자: ::after, ::before, :hover
+        가상요소(Element-가상태그) :hover 사용예) a:hover
+    */
+    h1{ background-color: rgb(181, 224, 241) ;}
+    div *{
+        color: white;
+    }
+    .box-one, .box-two{background-color: tomato;}
+    #box-four,#box-five{background-color: rgb(250, 250, 166);}
+    /* .box-one p::after  {content: '+add'; } */
+    /* .box-one p::before { content: 'add+'; } */
+    a:hover{color:white;} 
+    /*크기단위 font크기,img크기, 단위종류3가지 ~px,~em(1,2배수), ~rem(root기반배수)*/
+    .box-one {
+        font-size: 8px;
+        /*font-size: 1.5em;*/
+        /* 웹브라우저 기본 폰트크기는 16px*1.5 = 1.5em */
+        /*font-size: 1.5rem;*/
+        }
+        .box-one p {
+            /*웹브라우저 기본폰트인 16px의 1.5배 아니고, 부모요소의 1.5배 (8px의1.5배)*/
+            font-size: 1.5em;
+            font-size: 1.5rem;
+            /* 위에서부터 해석하는 방식 인터프리터형 = 자바스크립트 인터프리터형 언어*/
+            }
+            .box-one{
+                width: 200px;
+                height: 200px;
+                background-color:gray;
+                padding:20px;/* 안쪽여백 */ 
+                /* 바깥여백: 4가지방향 12시 시작 시계방향 */
+                margin:50px 20px 50px 60px;
+                /* 바깥여백 : 2가지방향 상하/좌우 */
+                margin: 30px 60px;/* 30 상하 20좌우 */
+                border:10px solid black;
+                box-sizing: border-box;
+                /*가로 가운데 정렬하는 방법*/
+                margin : 0px;
+                margin : 0px auto;/*0 상하, auto 좌우*/
+                margin : 0px;
+                position: fixed;/*자리가 다른 태그와 관련없는 위치가짐*/ 
+                /* absolute는 절대위치, fixed고정위치 */
+                margin-top: 20px;
+                margin-left: 20px;
+
+            }
+            .box-two{
+                width: 200px;
+                height: 200px;
+                background-color:burlywood;
+                padding:20px;
+                box-sizing: border-box; /* 필수 */
+            }
+</style>
+</head>
+<body>
+    <h1>헬로 css</h1>
+     <div class="box-one">
+         <p style="color: honeydew;">
+        <a href="#">↑</a></p>
+    </div>
+     <div class="box-two">two two two</div>
+     <div class="box-three">three</div>
+     <div id="box-four">four</div>
+     <div id="box-five">five</div>
+    <!-- 
+        10 크롬 확장프로그램으로 컬러 피커 사용해보기
+        09 구글 폰트 사용하기: 나눔고딕체 사용
+        08 위치: 고정, 절대위치, 상대위치(기준)
+        07 정렬: 가로 가운데정렬
+        06 테두리크기: 여백(안쪽 패딩, 바깥쪽 마진)
+        05 박스크기: 박스크기에 테두리크기,패딩크기 무시
+        04 크기 단위: px, em(부모영역의 2배), rem(루트영역의 2배)
+        03 선택자 종류 사용
+
+        02 CSS용어 설명: h${헬로 CSS}*6
+        처음하시는 분들이 헷갈려하는 부분 : 계단형 영역선택경로(path:상대경로,절대경로)
+        Cascade Style Sheet 계층형 스타일 표 ok.
+        01 css 적용하는 3가지 방법 확인, 내부css, 외부css, 인라인css
+     -->
+     <p><span style="color:tomato;">Lorem ipsum</span> dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+     </p>
+     <p><span style="color:tomato;">Lorem ipsum</span> dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit qui labore alias expedita, a officiis, accusamus omnis vero vitae sapiente perspiciatis quis aliquam, numquam magni eos quam possimus sint magnam!
+        </p>
+</body>
+</html>
