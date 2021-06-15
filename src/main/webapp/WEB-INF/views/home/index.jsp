@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/resources/home/css/reset.css">
 <!-- 여기서 부터 사용자 정의형 스타일 + 스크립트 추가(아래) -->
 <link rel="stylesheet" href="/resources/home/css/mobile.css">
-<!-- 태블릿용 CSS 임포트 -->
+<!-- 테블릿용 CSS 임포트 -->
 <link rel="stylesheet" href="/resources/home/css/tablet.css">
 <!-- PC용 CSS 임포트 -->
 <link rel="stylesheet" href="/resources/home/css/pc.css">
@@ -25,23 +25,19 @@
 <!-- 메인슬라이드 코어 임포트 -->
 <script src="/resources/home/js/slidemain.js"></script>
 <style>
-	footer{
-		text-align: left;
-	}
-/* 테블릿용 메인페이지 스타일 지정(아래) 801~무한대까지 재정의 */
+/* 테블릿용 메인페이지 스타일 지정(아래) 801px~무한대까지 재정의 */
 @media all and (min-width:801px) {
 	
 }
-/* PC용 메인페이지 스타일 지정 1066~무한대까지 재정의 */
+/* PC용 메인페이지 스타일 지정 1066px~무한대까지 재정의 */
 @media all and (min-width:1066px) {
 	
 }
 </style>
 <script>
-
 // 메인페이지 전용 슬라이드 호출 부분
 $(document).ready(function() {
-	//위에서 선언한 함수|변수 사용(아래)
+	// 위에서 선언한 함수|변수 사용(아래)
 	//여기서 함수호출(실행)
 	slideAuto = setTimeout('play_w("right")', 3000);//3초마다 play_w함수 실행
 	var slidePlayHide = setTimeout(function(){
@@ -111,11 +107,11 @@ $(document).ready(function() {
                             </ul>
                         </div>
 					</li>
-					<li><a href="board_view.html" class="openAll2">커뮤니티</a>
+					<li><a href="board_list.html" class="openAll2">커뮤니티</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
                                 <li><a href="board_list.html">공지사항</a></li>
-                                <li><a href="board_list.html">갤러리게시판</a></li>
+                                <li><a href="board_list.html">겔러리게시판</a></li>
                             </ul>
                         </div>
 					</li>
@@ -176,7 +172,7 @@ $(document).ready(function() {
 	
 		<!-- 갤러리최근게시물영역 -->
 		<div class="about_area">
-			<h2>갤러리 최근 게시물 <b>TOP 3</b></h2>
+			<h2>겔러리 최근 게시물 <b>TOP 3</b></h2>
 			<div class="about_box">
 				<ul class="place_list box_inner clear">
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.contact_pop').show();">
@@ -202,13 +198,11 @@ $(document).ready(function() {
 		</div>
 		<!-- //갤러리최근게시물영역 -->
 
-		
 		<!-- 카카오톡상담및최근공지사항영역 -->
 		<div class="appbbs_area">
 			<div class="appbbs_box box_inner clear">
 				<h2 class="hdd">상담과 최근게시물</h2>
 				<p class="app_line">
-				
 					<a href="javascript:;">카카오톡 1:1 상담</a>
 					<a href="javascript:;">전화 상담 신청</a>
 				</p>
@@ -226,10 +220,8 @@ $(document).ready(function() {
 		</div>
 		<!-- //카카오톡상담및최근공지사항영역 -->
 	</div>
-	<!-- //메이콘텐츠영역 -->
+	<!-- //메인콘텐츠영역 -->
 	
-
-	<!--  -->
 	<!-- 푸터메뉴및사업자정보영역 -->
 	<footer>
 		<div class="foot_area box_inner">

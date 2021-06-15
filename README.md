@@ -9,44 +9,114 @@
 - 2달째부터(백엔드), 주로 스프링으로 실습이 진행(납품용-이력서포트폴리오용).
 - VS code에서 만든 UI를 이클립스에서 JSP로 변경 한 후 스프링웹프로젝트를 진행합니다.
 
-#### 20210607(월) 작업.
--마이바티스 추가순서:1번+1번 끝
--1.pom.xml에 의존성 추가
--2.
-- JUnit로 CRUD실습(아래)
-- JUnit의 oldQueryTest메서드 처럼 직접쿼리를 사용하지 않고,쿼리를 관리하는 프로그램으로
-- 오라클의 DB관리 로그인정보(Application Express웹프로그램이름): admin/apmsetup -> 암호변경요청: Apmsetup1234%(대문자추가+특수문자추가+숫자)
 
+#### 20210616(수) 작업예정
+-관리자단 게시판 생성관리 CRUD 처리.(3.AOP기능구현).
+-관리자단 게시물관리 CRUD -처리(4.파일업로드구현,5.트랜잭션구현).
+
+#### 20210615(화) 작업.
+-관리자단 회원관리 수정 암호 수정 잘 되는지 확인OK.
+-회원관리 CRUD 화면 JSP구현 update(OK), delete(OK) 
+ ,insert(OK)
+-[공지]06-17 목요일(4교시) UI 디자인 시험 있습니다.
+ (화면기획서XLS제작, 화면설계서PPT제출용)
+
+
+#### 20210614(월) 작업.
+-수업 전 관리자 회원관리 view화면구현 마무리OK.
+-multipart(첨부파일기능) 라는 폼태그 전송방식을 추가 -> commons.fileupload 외부모듈필수(pom.xml에서 의존성을 추가합니다.)
+-위 외부모듈을 스프링 빈으로 등록합니다.(servlet-context.xml 하단에 추가)
+-CRUD에서 multipart를 사용한다면, 리졸브(resolve-해석기) 스프링빈이 필요
 ```
--- SQL디벨러퍼 에서 system으로 로그인후 아래 쿼리로 XE2사용를 완벽하게 지우기(아래)
-SELECT * FROM all_users;
--- all_users는 테이블X, 시노님(동의어)
---delete from all_users where username='XE2';
---시노님=테이블명이 사용하기 힘들정도로 길거나
---오라클은 스프링과 같은 방식 패키지명안에 함수,
---프로시저(오라클프로그램)를 만들수 있습니다.
---패키지명이 길어서 사용시 개발자에게 부담이 됨.
---위 상황을 해결하도록 만든것이 시노님(동의어)임.
-DROP USER XE2 CASCADE;--XE2사용자를 지울때, 
---XE사용자가 생성한 테이블까지 모두 지우는 명령.
---CSS(Cascade계층형 Style Sheet)
+<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   </beans:bean>
 ```
--현업에서는 오픈소스인  mysql(마리아DB)를 사용하실 기회가 더 많습니다.-개발자가 많은 편
--오라클을  납품시 SW비용이 산정이 되어서 사용하실 기회가 적지만, 개발자가 상대적 적은편
-- 보통은 학교 전산실,시청 전산실,기업체 전산실에 부탁을 해서 XE사용자 추가해 달라고 요청해서,발급받은 계정으로 개발시작
-- 오라클 기초이론 마무리: 시퀸스(스프링에서 사용-AI자동증가기능)
-- 만약 시퀸스 (AI)기능이 없다면, 게시물 작성시 첫번째,두번째 게시물 등등을 구별하는 
--숫자를 계속 추가하려면,현재까지 저장된 게시물의 최고번호값(Max)을 구해서 +1해야 합니다(개발자가Insert시)
--DB에서 기본으로 위 Max값을 구해서 +1하는 로직을 만들게 됩니다.이 기능이 시퀸스(AI)입니다.
--우리 스프링 프로젝트에서는 2개 시퀸스를 만듭미다.(게시물 시퀀스 SEQ_BNO, 댓글 시퀸스SEQ_RNO)
--시노님(긴 객체를 개발자가 타이핑하기 어려워서 만든단축 이름)예, sys.dual -> dual 단축이름으로 사용가능
-- 오라클: 더미데이터 일괄등록 예정. 회원관리(100명), 게시판관리(공지사항50개,겔러리50개)
-- 위 더미데이터는 프로시저(함수)라는 오라클 프로그램방식으로 추가합니다.
-- 오라클: 댓글은 수동등록 후 마무리.
-- JUnit로 CRUD 실습(아래). 
-- JUnit의 oldQueryTest메서드처럼 직접쿼리를 사용하지 않고, 쿼리를 관리하는 프로그램으로 제어를 합니다.
-- 위 쿼리를 관리하는 프로그램이 마이바티스 입니다. 그래서, 마이바티스 모듈을 추가한 후 JUnit실습을 진행합니다.
-- 스프링: 관리자단, 회원관리부터 스프링 작업예정.
+- GET : Insert (외부 사이트 입력폼에서도 입력가능)-쿼리스트링으로 데이터전송 url?key=value&key2=value2
+- POST: Insert(외부 사이트에서 입력불가능,같은 사이트의 입력폼에서 가능) form의 입력태그(히든스트링)로 데이터전송
+-나머지 관리자 회원관리 CRUD 화면 JSP구현 update(OK), delete(OK)
+
+#### 20210611(금) 작업.
+-수업전 관리자단 회원관리 페이징처리에서 컨트롤러와 calcPage()메서드의 관계 간단하게 확인하겠습니다.
+-JSTL: Java Standard Tag Library 자바표준태그모듈로서 JSP에서 자바를 사용하는 표준.
+-taglib uri(유니폼 리소스 ID-의미가있는고유값=식별값) > url(링크경로)
+-prefix(접두어), 태그 별칭 사용 예, <c 시작
+관리자단 회원목록 처리 마무리(1.페이징및 검색기능구현)OK.
+model을 이용해서 결과를 JSP로 구현.(2.JSP화면은 표준언어인 JSTL로 구현)
+
+####20210610(목) 작업.
+컨트롤러를 이용해서 관리자단 회원관리화면 JSP 만들기 진행시작.
+JUnit 마치고, 관리자단 회원관리(CRUD) jsp까지는 작업합니다. 이후 앞에 내용참조해서 확장해 나가는 작업이 이어집니다.
+수업전 내용 확인 합니다.(아래)
+쿼리실습에서 .equals함수 사용에 대해서 설명할때,아래 isEmpty메서드와 착각해서 이야기 한 내용이 있어서 정정 합니다.
+자바에서 객체가 공백 또는 비었는지 비교할때, 예를 들면, 우리프로젝트에서 첨부파일이 있는지 비교할때 아래 처럼 사용하지 않고
+if(save_file_name != null && "".equals(save_file_name))
+다음처럼 짧게(널과공백체크를 한번에) 사용합니다.(아래)
+if(!save_file_name.isEmpty()) //게시판 첨부파일 체크시 사용예정
+=========================================
+GTM시간(그리니치천문대기준-표준시)-KST한국시간과는 9시간.
+DB서버에 타임존설정 Asia/Seoul되어 있으면, 그냥사용.
+만약 위 GTM + 9시간해서 Insert, Update 한국시간으로 사용.
+JUnit에서 회원관리 나머지 Read 테스트 진행OK.
+오라클일때 확인 : (어제 카톡 단톡방에 있음) SELECT TO_CHAR(systimestamp + numtodsinterval( 9, 'HOUR' ), 'YYYY-MM-DD HH24:MI.SS.FF4') from dual;
+Mysql(마리아dB)확인 :(어제 카톡 단톡방에 있음) SELECT DATE_ADD(NOW(3), INTERVAL 9 HOUR);
+업데이트 실습은 회원암호를 스프링시큐리티5 암호화(1234->해시데이터)로 일괄변경 실습예정.
+정방향 암호화 가능, 역방향 복호화는 불가능(JAVA용 스프링시큐리티암호화,DB용 MD5등등)
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+String userPwEncoder = passwordEncoder.encode(memberVO.getUser_pw());
+memberVO.setUser_pw(userPwEncoder);
+20210609(수) 작업.
+프로젝트를 진행: 보유기술 70%(솔루션있는업체) + 신기술 30%(개발사도 모릅니다) - 9할 성공
+PageVO.java 클래스 생성 마무리OK.
+JUnit에서 위 작업한 내용을 기준으로 selectMember() 테스트 진행OK.(검색,페이징)
+: 태그 안쪽에 부등호를 사용하기 위해서 문자열 변환 태그를 사용.
+쿼리에서 변수와 문자열과의 연결할때는 +(자바)X, ,(X), ||(O)
+JUnit에서 회원관리 나머지 CRUD 테스트중 Create, Delete진행OK.
+20210608(화) 작업.
+페이징에 사용되는 변수(쿼리변수+VO변수) 아래
+queryStartNo, queryPerPageNum, page, perPageNum, startPage, endPage
+검색에 사용되는 변수(쿼리변수만): 검색어(search_keyword), 검색조건(search_type)
+--SQL쿼리 페이징을 구현해서 변수로 삼을것을 정의
+--PageVO의 멤버변수로 사용예정
+SELECT TableB.* FROM
+(
+    SELECT ROWNUM AS RNUM, TableA.* FROM
+    (
+        SELECT * FROM tbl_member
+        WHERE user_id LIKE '%admin%'
+        OR user_name LIKE '%사용자8%'
+        ORDER BY reg_date DESC
+    ) TableA WHERE ROWNUM <= (1*5)+ 5 --  (page*b)+b
+) TableB WHERE TableB.RNUM > 1*5      --  (page*b)
+--페이징쿼리에서 필요한 변수는 2개
+--현재페이지수의 변수 page*b == queryStartNo
+--1페이당보여줄 개수의변수 b == queryPerPageNum
+--PageVO에서 필요한 추가변수: page
+--UI하단의 페이지 선택번호 출력할때 사용하는 변수(아래) 
+-- perPageNum 변수받아서 startPage, endPage 를 구해서
+-- 하단의 페이지 선택 번호를 출력
+스프링코딩 작업순서 1부터6까지(아래)
+ERD를 기준으로 VO클래스를 생성.
+M-V-C 사이에 데이터를 입출력하는 임시저장 공간(VO클래스-멤버변수+Get/Set메서드) 생성
+보통 ValueObject클래스는 DB테이블과 1:1로 매칭이 됩니다.
+매퍼쿼리(마이바티스사용)를 만듭니다.(VO사용해서쿼리생성).
+DAO(데이터엑세스오브젝트,DTO)클래스를 생성(SqlSession사용쿼리실행).*Sql세션은 root-context에 빈으로 만들었습니다.(2개)
+IF인터페이스는 만드는 목적: 복잡한 구현클래스 간단하게 구조화 시켜서 개발자가 관리하기 편하기 정리하는 역할 -> 기사시험책 캡슐화 구현과 관련(알약 캡슐-안에 어떤약이 있는모르게 먹게하기) 프로그램에서도 캡슐화는 구현 내용을 몰라도, 이름만 보고 사용하게 만든것.
+스프링 부트(간단한 프로젝트)에서는 4번 Service클래스가 없이 바로 컨트롤러로 이동합니다.
+Service(서비스)클래스생성(서비스에 쿼리결과를 담아 놓습니다.)(1개)
+게시물을 등록하는 서비스1개(tbl_board-DAO1+tbl_attach첨부-DAO2)
+JUnit에서 위 작업한 내용을 CRUD 테스트(선배작업) -> 대리,사원에게 아래 작업을 맡김.
+Controller(컨트롤러)클래스생성(서비스결과를 JSP로 보냅니다.)
+JSP(View파일) 생성(컨트롤러의Model객체를 JSTL을 이용해 화면에 뿌려 줍니다.)
+20210607(월) 작업.
+마이바티스 추가 순서: 1번+2번 끝
+pom.xml에 의존성 추가.
+마이바티스설정파일 추가(쿼리를 저장할 위치지정+파일명지정)OK.
+JUnit로 CRUD 실습(아래). - 코딩 시작.
+JUnit의 oldQueryTest메서드처럼 직접쿼리를 사용하지 않고, 쿼리를 관리하는 프로그램으로 제어를 합니다.
+위 쿼리를 관리하는 프로그램이 마이바티스 입니다. 그래서, 마이바티스 모듈을 추가한 후 JUnit실습을 진행합니다.
+스프링: 관리자단, 회원관리부터 스프링 작업예정.
+책 스프링 웹프로젝트는 개발 STS(스프링툴슈트) 툴.=> 기반은 이클립스 기반을 확장.
+우리가 하는 책 스프링 웹프로젝트는 개발 전자정부표준프레임워크 개발 툴. => 기반은 이클립스 기반을 확장. => 전자정부표준프레임워크 를 커스터마이징(제외)
 
 #### 20210604(금) 작업.
 - 오라클일때: localhost:1521/xe 접속URL끝의 xe 서비스(서버)ID명  1개 > XE, XE2 스키마2개(DB2개) 존재합니다.
