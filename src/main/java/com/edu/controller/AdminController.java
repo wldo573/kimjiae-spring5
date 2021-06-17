@@ -43,7 +43,8 @@ public class AdminController {
 	//왜 board_type하지않고, bbs_type하는 이유는 왼쪽메뉴 고정시키는 로직에서 경로 board와 겹치지 않게 하기 위해
 	@RequestMapping(value="/admin/bbs_type/bbs_type_list",method=RequestMethod.GET)
 	public String selectBoardTypeList(Model model) throws Exception{//목록폼1
-		model.addAttribute("listBoardTypeVO",boardTypeService.selectBoardType());boardTypeService.selectBoardType();
+		//아래 모델은 AOP기능중 ControllerAdivce 인터페이스로 구현했기 때문에 아래는 실행안함.
+		//model.addAttribute("listBoardTypeVO",boardTypeService.selectBoardType());boardTypeService.selectBoardType();
 		return "admin/bbs_type/bbs_type_list";//상대경로 일때는  views폴더가 root(최상위)
 	}
 	//bbs_type_list,jsp에서 게시판생성 버튼을 클릭했을때 이동하는 폼 경로
@@ -53,7 +54,7 @@ public class AdminController {
 	}
 	//bbs_type_insert.jsp의 입력폼에서 전송된 값을 BoardTypeVO 자동담겨서 담아서 {구현}단, 자동으로 값이 바인딩되려면,폼name과,VO 멤버변수명 동일 해야함. 
 	@RequestMapping(value="/admin/bbs_type/bbs_type_insert",method=RequestMethod.POST)
-	public String insertBoardType(BoardTypeVO boardTypeVO,@RequestParam("user13421_id")String user_id) throws Exception{//입력처리1
+	public String insertBoardType(BoardTypeVO boardTypeVO) throws Exception{//입력처리1
 		boardTypeService.insertBoardType(boardTypeVO);
 		return "redirect:/admin/bbs_type/bbs_type_list";//리다이렉트(뒤로가기 데이터사라짐)는 절대경로, forward:이동이 가능 (뒤로가기 데이터가 살아있음)
 	}
@@ -61,7 +62,7 @@ public class AdminController {
 	//게시판 생성관리는 이 기능은 사용자단에서 UI를 사용할 일이 없기때문,Read,Update를 1개로 사용
 	@RequestMapping(value="admin/bbs_type/bbs_type_update",method=RequestMethod.GET)
 	public String updateBoardTypeForm(@RequestParam("board_type")String board_type,Model model) throws Exception{//수정폼
-		model.addAttribute("boardType()",boardTypeService.readBoardType(board_type));//서식model.addAttbute("jsp변수","데이터객체");
+		model.addAttribute("boardTypeVO",boardTypeService.readBoardType(board_type));//서식model.addAttbute("jsp변수","데이터객체");
 		return "admin/bbs_type/bbs_type_update";//jsp생략
 	}
 	@RequestMapping(value="admin/bbs_type/bbs_type_update",method=RequestMethod.POST)
