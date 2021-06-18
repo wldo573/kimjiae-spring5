@@ -10,7 +10,7 @@ import com.edu.vo.BoardTypeVO;
  *
  */
 public interface IF_BoardTypeDAO {
-	//CRUD 메서드 먕세만 생성(아래5개)
+	//CRUD 메서드 명세만 생성(아래5개)
 	public void deleteBoardType(String board_type) throws Exception;
 	public void updateBoardType(BoardTypeVO boardTypeVO) throws Exception;
 	public BoardTypeVO readBoardType(String board_type) throws Exception;
