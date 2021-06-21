@@ -16,7 +16,7 @@ public class BoardVO {
 	private String writer;
 	private Integer view_count;
 	private Integer reply_count;
-	private Date teg_date;
+	private Date reg_date;
 	private Date update_date;
 	private String board_type;//FK
 	
@@ -41,7 +41,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", view_count=" + view_count + ", reply_count=" + reply_count + ", teg_date=" + teg_date
+				+ ", view_count=" + view_count + ", reply_count=" + reply_count + ", reg_date=" + reg_date
 				+ ", update_date=" + update_date + ", board_type=" + board_type + "]";
 	}
 	//Get,Set 생성
@@ -81,11 +81,12 @@ public class BoardVO {
 	public void setReply_count(Integer reply_count) {
 		this.reply_count = reply_count;
 	}
-	public Date getTeg_date() {
-		return teg_date;
+	
+	public Date getReg_date() {
+		return reg_date;
 	}
-	public void setTeg_date(Date teg_date) {
-		this.teg_date = teg_date;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
 	public Date getUpdate_date() {
 		return update_date;
