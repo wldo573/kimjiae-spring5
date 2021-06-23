@@ -38,7 +38,7 @@ bno를 변수값으로 받는 로직을 추가했기 때문에 아래 주석
  -->
 <!-- 위bno는 게시물 등록시 첨부파일 쿼리는 bno 매개변수로 보낼 수가 없는 상태임. -->
 <!-- 게시물CRUD 쿼리생성 -->
-<delete id="deletBoard">
+<delete id="deleteBoard">
 delete from tbl_board where bno = #{bno}
 </delete>
 <update id="updateBoard">
