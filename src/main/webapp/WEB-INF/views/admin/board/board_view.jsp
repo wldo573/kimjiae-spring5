@@ -232,6 +232,8 @@ $(document).ready(function(){
 		//여기서는 함수내 변수
 		form_view.attr("action","/admin/board/board_list");
 		
+		
+		
 		form_view.submit();
 	});
 	$("#btn_delete").click(function(){
