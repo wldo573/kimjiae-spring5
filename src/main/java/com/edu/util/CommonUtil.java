@@ -1,16 +1,11 @@
 package com.edu.util;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-=======
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.annotation.Resource;
->>>>>>> branch 'master' of https://github.com/wldo573/kimjiae-spring5.git
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -37,27 +32,6 @@ public class CommonUtil {
 	//멤버변수생성(아래)
 	private Logger logger = LoggerFactory.getLogger(CommonUtil.class);
 	@Inject
-<<<<<<< HEAD
-	private IF_MemberService memberService;//스프링빈을 주입 받아서(DI) 객체준비
-	
-	//첨부파일이 이미지인지 아닌지 확인하는 데이터생성
-	private static ArrayList<String> checkImgArray = new ArrayList<String>() {
-		{
-		add("gif");
-		add("jpg");
-		add("jpeg");
-		add("png");
-		add("bmp");
-		}
-	};
-	
-	public static ArrayList<String> getCheckImgArray() {
-		return checkImgArray;
-	}
-
-
-	//RestAPI서버 맛보기ID중복체크 (제대로 만들면 @RestController 사용)
-=======
 	private IF_MemberService memberService;//스프링빈을 주입받아서(DI) 객체준비
 	
 	//XSS 크로스사이트스크립트 방지용 코드로 파싱하는 메서드 (아래)
@@ -103,7 +77,6 @@ public class CommonUtil {
 	}
 	
 	//RestAPI서버 맛보기ID중복체크(제대로 만들면 @RestController 사용)
->>>>>>> branch 'master' of https://github.com/wldo573/kimjiae-spring5.git
 	@RequestMapping(value="/id_check", method=RequestMethod.GET)
 	@ResponseBody //반환받은 값의 헤더값을 제외하고, 내용(body)만 반환하겠다는 명시
 	public String id_check(@RequestParam("user_id")String user_id) throws Exception {

@@ -67,11 +67,7 @@
               <tbody>
                 <!-- 아래 링크주소에 jsp에서 프로그램처리예정 -->
                 <c:forEach var="boardVO" items="${listBoardVO}">
-<<<<<<< HEAD
-                <tr style="cursor: pointer;" onclick="location.replace('/admin/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}&search_keyword=${pageVO.search_keyword}');">
-=======
                 <tr style="cursor: pointer;" onclick="location.replace('/admin/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}');">
->>>>>>> branch 'master' of https://github.com/wldo573/kimjiae-spring5.git
                   <td>${boardVO.bno}</td>
                   <td>${boardVO.board_type}</td>
                   <td>${boardVO.title}</td>
