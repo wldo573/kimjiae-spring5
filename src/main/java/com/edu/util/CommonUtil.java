@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -99,8 +100,12 @@ public class CommonUtil {
 		// 폴더에 저장할 PK 파일명을 생성(아래)
 		UUID uid = UUID.randomUUID();//유니크 ID값 생성
 		String saveFileName = uid.toString() + "." + StringUtils.getFilenameExtension(realFileName);
-		byte[] fileData = file.getBytes();
+		//file의 MultipartFile 클래스형 객체.클래스형 자료(멤버변수,메서드..)는 직접 파일 저장을 할 수 없음.
+		//그래서, 바이트형으로 파싱(변환)해서 저장해야함. ->bit형(01010001)이진 비트형 자료로 변환필요
+		//자바자료형 정수: byte(bit로 구성)<short<int<long, 실수형(소수점):float<double
+		byte[] fileData = file.getBytes();//getBytes 메서드를 데이터를 bit형으로 파싱해서 저장
 		File target = new File(uploadPath,saveFileName);
-		return null;
+		FileCopyUtils.copy(fileData, target);//파일이 물리적으로 폴더에 저장됨
+		return saveFileName;
 	}
 }
