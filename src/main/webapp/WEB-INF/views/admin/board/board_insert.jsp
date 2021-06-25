@@ -125,7 +125,7 @@
 			fontSizes: ['8','10','12','14','16','18','20','22','24','26','28','30'],
 			fontNamesIgnoreCheck: ['Nanum Gothic']
 		});
-		//서머노트에서 html5의 required 속성 작동이 않되기 때문에 아래코드 추가
+		//서머노트에서 html5의 required 속성 작동이 안되기 때문에 아래코드 추가
 		$("form[name='form_write']").on('submit',function(event){
 			if($('#content').summernote('isEmpty')){
 				alert('내용은 반드시 입력해 주세요');
