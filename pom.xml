@@ -138,12 +138,12 @@
 			<version>1.16</version>
 		</dependency>
 		<!-- 마이바티스 모듈 추가(아래) -->
-		   <dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.4.6</version>
-			</dependency>
-			<dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.3.2</version>
@@ -174,14 +174,14 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.3</version>
-		</dependency>  
-		<!-- 스프링 AOP 기능 라이브러리 모듈(아래) --> 
+		</dependency>
+		<!-- 스프링 AOP 기능 라이브러리 모듈(아래) -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
-		<!--ResponseEntity<HasgMap>형태의 data를 클라이언트(jsp,부메랑)쪽으로 json데이터로 -->
+		<!-- ResponseEntity<HashMap>형태의 data를 클라이언트(jsp,부메랑)쪽 json데이터로 반환시필요 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
