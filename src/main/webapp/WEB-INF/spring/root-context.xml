@@ -15,15 +15,20 @@
 				<!-- <value>
 					classpath:/properties/oracle.properties
 				</value> -->
+				 <value>
+					classpath:/properties/cloude.properties
+				</value>
+				<!-- 
 				<value>
 					classpath:/properties/hsql.properties
 				</value>
+				 -->
 			</list>
 		</property>
 	</bean>
 	<!-- 알리아스 Alias(별명) dataSource로 만듭니다.이유? 여러개의 DB와 호환되게 만들게됩니다. -->
 	<!-- 오라클, Mysql, Hsql 등 여러 DB서버와 호환되게 만드는데 필요(아래) -->
-	<alias name="dataSource-${dbType}" alias="dataSource"/>
+	<alias name="dataSource-${DbType}" alias="dataSource"/>
 	<!-- embeded는 내장형 (앱용)으로서 간단한 용도의 DB구조에 사용.
 	-file구조가 아닌 메모리 구조로 가능 초기ID/암호는 = admin / user02  
 	-->
@@ -38,9 +43,9 @@
 
 	<!-- 위 생성 DB파일에  데이터 생성시키는 스크립트문장(아래)최초 1회만 실행-->
 	<!-- hsql이 아닌 다른 DB일때는 주석처리 필수 -->
-	<!-- <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS"> 
+	 <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS"> 
 		<jdbc:script location="classpath:/embeded/hsql_file.sql" /> 
-	</jdbc:initialize-database> -->
+	</jdbc:initialize-database> 
 	
 	<!-- hsql 데이터베이스 매니저실행 /embeded/hsql_file.db를 매니저에서 불러옴
 		배포시는 항상 주석처리 합니다.
@@ -110,7 +115,7 @@
 	</bean>
 	<!-- 파일업로드 설정 업로드 폴더위치 전역변수로 생성 bean을 실행시 초기값을 지정 contstructor사용 -->
 	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="${UpdatePath}" />
+		<constructor-arg value="${UploadPath}" />
 	</bean>
 	
 </beans>
