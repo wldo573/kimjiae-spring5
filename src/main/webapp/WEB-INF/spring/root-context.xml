@@ -18,11 +18,11 @@
 				 <value>
 					classpath:/properties/cloude.properties
 				</value>
-				<!-- 
-				<value>
+				 
+				<!-- <value>
 					classpath:/properties/hsql.properties
-				</value>
-				 -->
+				</value> -->
+				 
 			</list>
 		</property>
 	</bean>
@@ -44,7 +44,7 @@
 	<!-- 위 생성 DB파일에  데이터 생성시키는 스크립트문장(아래)최초 1회만 실행-->
 	<!-- hsql이 아닌 다른 DB일때는 주석처리 필수 -->
 	 <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS"> 
-		<jdbc:script location="classpath:/embeded/hsql_file.sql" /> 
+		<jdbc:script location="classpath:/db_script/hsql_file.sql" /> 
 	</jdbc:initialize-database> 
 	
 	<!-- hsql 데이터베이스 매니저실행 /embeded/hsql_file.db를 매니저에서 불러옴

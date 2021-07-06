@@ -322,8 +322,13 @@ var replyList = function() {
 				printPagingList(result.pageVO, ".pagination");
 			}
 		},
-		error:function() {
-			alert("RestAPI서버가 작동하지 않습니다. 다음에 이용해 주세요.");
+		error:function(result) {
+			//console.log(result);//크롬에서 확인할 때,
+			//전체 json데이터를 출력할때 stringify함수로 형변환해서 출력
+			//만역 json데이터에서 키이름을 알게 되면, stringfy함수필요없이 result.responseText출력가능
+			alert(result.responseText);//이클립스에서 확인할 때, 관리자단에서만사용
+			//단, 관리자단에서만 디버그하고, 사용자단에서는 아래 항목만 유지
+			alert("RestAPI서버가 작동하지 않습니다. 다음에 이용해 주세요0.");
 		}
 	});
 };
@@ -333,30 +338,29 @@ var replyList = function() {
 $(document).ready(function(){
 	//댓글 모달창 삭제버튼의 액션처리
 	$("#btn_reply_delete").click(function(){
-		//댓글을 삭제할때 필요한 변수 확인 2개 rno(삭제쿼리에 사용), bno(게시물 댓글 카운트 업데이트에 사용)
+		//댓글을 삭제할때 필요한 변수확인 2개 rno(삭제쿼리사용), bno(게시물댓글카운트업데이트에사용)
 		var rno = $("#rno").val();//모달창의 input태그의 값을 가져오기
-		var bno = "${boardVO.bno}";//자바변수값.
+		var bno = "${boardVO.bno}";//자바변수값. @Controller의 model에 담긴값을 사용
 		$.ajax({
-			type:"delete",//전송타입,컨트롤러의 RequestMethod의 값과 동일
-			url:"/reply/reply_delete/"+bno+"/"+rno,//Endpoint=@RestController의 @RequestMapping(valye="")
-			dataType:"text",//결과값을 받는 데이터형식 text-String , json-Map<String,Object
-			//date:"",//처리할 값을 보내는 데이터형식->json을 사용하지 않고 패스베리어블로 보내기때문
-			//headers:"",//크롬의 개발자도구>네트워크항목의 오른쪽 창에서 확인가능,전송방식때문에 필요
-			success:function(result){
-				if(result == "success"){
+			type:"delete",//전송타입, 컨트롤러의 RequestMethod의 값과 동일
+			url:"/reply/reply_delete/"+bno+"/"+rno,//endpoint=@RestController의 @RequestMapping(value="")
+			dataType:"text",//결과값을 받는 데이터형식 text-String, json-Map<String,Object>
+			//data:"",//처리할 값을 보내는 데이터형식 -> json을 사용하지 않고 패스베리어블 보내기때문
+			//headers:"",//크롬의 개발자도구>네트워크항목의 오른쪽 창에서 확인가능, 전송방식때문에 필요
+			success:function(result) {
+				if(result=="success") {
 					alert("삭제 되었습니다.");
-					//삭제후 모달창 숨기고,댓글 카운트UI -1처리,댓글 리스트 리프레시(렌더링)
+					//삭제후 모달창 숨기고, 댓글카운트UI -1처리, 댓글 리스트 리프레시(렌더링)
 					$("#modal-reply").modal("hide");
 					var reply_count = $("#reply_count").text();//Get
 					$("#reply_count").text(parseInt(reply_count)-1);//Set
-					$("reply_page").val("1");//댓글을 삭제한 후 1 페이지를 이동
+					$("#reply_page").val("1");//댓글을 삭제한 후 1페이지로 이동
 					replyList();
 				}
 			},
-			error:function(){
-				alert("RestAPI서버가 작동하지 않습니다. 다음에 시도해 주세요.")
+			error:function() {
+				alert("RestAPI서버가 작동하지 않습니다. 다음에 시도해 주세요1.");
 			}
-			
 		});
 	});
 	//댓글 모달창 수정버튼의 액션처리
@@ -366,7 +370,7 @@ $(document).ready(function(){
 		var rno = $("#rno").val();//modal내 input태그로 추가
 		if(reply_text == '' || rno == '') {//&& and, || or
 			//위 조건 2중에 1개라도 만족하면 아래 내용이 실행
-			alert("댓글내용은 공백이면 안됩니다.");
+			alert("댓글내용은 공백이면 않됩니다.");
 			return false;//더이상 실행없이 콜백함수를 빠져 나갑니다.
 		}
 		$.ajax({
@@ -392,7 +396,7 @@ $(document).ready(function(){
 				
 			},
 			error:function() {
-				alert("RestAPI서버가 작동하지 않습니다. 잠시 후 이용해 주세요.")
+				alert("RestAPI서버가 작동하지 않습니다. 잠시 후 이용해 주세요2.")
 			}
 		});
 	});
@@ -414,7 +418,7 @@ $(document).ready(function(){
 		var replyer = $("#replyer").val();
 		if(reply_text == '' || replyer == '') {//&& and, || or
 			//위 조건 2중에 1개라도 만족하면 아래 내용이 실행
-			alert("작성자ID와 댓글내용은 공백이면 안됩니다.");
+			alert("작성자ID와 댓글내용은 공백이면 않됩니다.");
 			return false;//더이상 실행없이 콜백함수를 빠져 나갑니다.
 		}
 		$.ajax({
@@ -439,7 +443,7 @@ $(document).ready(function(){
 				replyList();
 			},
 			error:function() {
-				alert("RestAPI서버가 작동하지 않습니다. 잠시 후 이용해 주세요.")
+				alert("RestAPI서버가 작동하지 않습니다. 잠시 후 이용해 주세요3.")
 			}
 		});
 	});
