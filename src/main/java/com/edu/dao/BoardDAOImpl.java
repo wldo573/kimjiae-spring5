@@ -14,72 +14,68 @@ import com.edu.vo.BoardVO;
 import com.edu.vo.PageVO;
 
 /**
- * 이 클래스는 게시물 CRUD를 구현하는 DAO클래스 입니다
+ * 이 클래스는 게시물 CRUD를 구현하는 DAO클래스 입니다.
  * @author 김지애
  *
  */
 @Repository
-public class BoardDAOImpl implements IF_BoardDAO{
+public class BoardDAOImpl implements IF_BoardDAO {
 	private Logger logger = LoggerFactory.getLogger(BoardDAOImpl.class);
 	@Inject
-	private SqlSession sqlSession;//sql세션템플릿(틀)에는 insert,update()
+	private SqlSession sqlSession;//sql세션템플릿(틀)에는 insert,update()...
 	
 	@Override
 	public void deleteAttachAll(Integer bno) throws Exception {
 		// TODO sql세션템플릿을 상용한 매퍼쿼리 호출(아래)
 		sqlSession.delete("boardMapper.deleteAttachAll", bno);
-		
 	}
 
 	@Override
 	public void deleteAttach(String save_file_name) throws Exception {
 		// TODO 위 주석과 동일
 		sqlSession.delete("boardMapper.deleteAttach", save_file_name);
-		
 	}
 
 	@Override
 	public void updateAttach(AttachVO attachVO) throws Exception {
-		// TODO 아래 주석 동일 -첨부파일 주, 메서드명은 update지만,쿼리는 insert
+		// TODO 아래 주석 동일-첨부파일 주, 메서드명은 update지만, 쿼리는 insert
 		sqlSession.insert("boardMapper.updateAttach", attachVO);
 	}
 
 	@Override
 	public void insertAttach(AttachVO attachVO) throws Exception {
-		// TODO 아래 주석 동일 -첨부파일
+		// TODO 아래 주석 동일-첨부파일
 		sqlSession.insert("boardMapper.insertAttach", attachVO);
-		
 	}
 
 	@Override
 	public List<AttachVO> readAttach(Integer bno) throws Exception {
 		// TODO 아래 주석 동일-첨부파일
-		return sqlSession.selectList("boardMapper.readAttach",bno);
+		return sqlSession.selectList("boardMapper.readAttach", bno);
 	}
 
 	@Override
 	public void updateViewCount(Integer bno) throws Exception {
 		// TODO 아래 주석 동일
-		sqlSession.update("boardMapper.updateViewCount",bno);
+		sqlSession.update("boardMapper.updateViewCount", bno);
 	}
 
 	@Override
 	public int countBoard(PageVO pageVO) throws Exception {
 		// TODO 아래 주석 동일
-		return sqlSession.selectOne("boardMapper.countBoard",pageVO);
+		return sqlSession.selectOne("boardMapper.countBoard", pageVO);
 	}
 
 	@Override
 	public void deleteBoard(int bno) throws Exception {
 		// TODO 아래 주석 동일
-		sqlSession.delete("boardMapper.deleteBoard",bno);
+		sqlSession.delete("boardMapper.deleteBoard", bno);
 	}
 
 	@Override
 	public void updateBoard(BoardVO boardVO) throws Exception {
-		// TODO 아래 주석 동일 
-		sqlSession.update("boardMapper.updateBoard",boardVO);
-		
+		// TODO 아래 주석 동일
+		sqlSession.update("boardMapper.updateBoard", boardVO);
 	}
 
 	@Override
@@ -90,9 +86,9 @@ public class BoardDAOImpl implements IF_BoardDAO{
 
 	@Override
 	public int insertBoard(BoardVO boardVO) throws Exception {
-		// TODO 아래 주석 동일
+		// TODO 아래 주석 동일+ 게시물 입력 후 반환값으로 bno를 받습니다.
 		sqlSession.insert("boardMapper.insertBoard", boardVO);
-		logger.info("디버그" + boardVO.getBno());
+		logger.info("디버그: " + boardVO.getBno());
 		return boardVO.getBno();
 	}
 
