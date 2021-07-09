@@ -1,9 +1,13 @@
 package com.edu.service;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.edu.dao.IF_MemberDAO;
@@ -14,14 +18,30 @@ import com.edu.vo.PageVO;
  * 이 클래스는 회원관리 서비스 인터페이스를 구현하는 클래스.
  * 상속 extends, 구현 implements 키워드를 사용
  * 스프링빈으로 등록하려면, @Service 애너테이션을 명시.
- * @author 김일국
+ * @author 김지애
  *
  */
 @Service
 public class MemberServiceImpl implements IF_MemberService {
 	@Inject //IF_MemberDAO를 주입해서 객체로 사용(아래)
 	private IF_MemberDAO memberDAO;
+	Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	
+	//헤로쿠클라우드에 30분휴먼상태를 깨우는 기능추가->root-context에서 지정한 스케줄러에서 20분간격으로 호출됨
+		public void herokuJobMethod() throws Exception {
+			//월-금 오전 8시부터 오후11시까지(미국시간23,0-14)
+			String urlStr = "https://kimjiae-spring5.herokuapp.com/";
+			URL url = new URL(urlStr);
+			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();//접속객체만들기
+			urlConnection.setUseCaches(false);//접속시 캐시사용없이 무조건 새로고침 하겠다고 명시
+			urlConnection.setReadTimeout(10000);//접속대기시간을 10초로 제한
+			//20분 마다 접속이 되는지 개발자가 확인하는 코드
+			if(urlConnection != null && urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				logger.info("헤로쿠 앱이 활성화 상태입니다.");
+			}else {
+				logger.info("헤로쿠앱이 비활성화 상태입니다.");
+			}
+		}
 	@Override
 	public List<MemberVO> selectMember(PageVO pageVO) throws Exception {
 		// 인터페이스에서 상속받은 메서드를 구현(아래)
