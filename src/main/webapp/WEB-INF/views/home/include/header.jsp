@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,12 +37,12 @@
 }
 </style>
 <script>
-//공통으로 사용하는 변수: 로그인성공+게시물 등록/수정/삭제 성공메세지
+//공통으로 사용하는 변수: 로그인성공+마이페이지+게시물 등록/수정/삭제 성공메세지
 if("${msg}" != "") {
 	alert("${msg} 가(이) 성공하였습니다.");
 }
-//공통으로 사용하는 에러메세지 변수:
-if("${msgError}"!=""){
+//공통으로 사용하는 에러메시지 변수:
+if("${msgError}" != "") {
 	alert("${msgError}");
 }
 </script>
@@ -67,21 +68,21 @@ if("${msgError}"!=""){
 			<div class="header_cont">
 				<ul class="util clear">
 				<c:choose>
-					<c:when test="${session_enabled eq 'true' }">
-					<!-- 로그인 후 보이는 메뉴 (아래) -->
+					<c:when test="${session_enabled eq 'true'}">
+						<!-- 로그인 후 보이는 메뉴(아래) -->
 						<li><a href="#">${session_username} 님 환영합니다.</a></li>
-						<li><a href="/logout">로그아웃</a>
+						<li><a href="/logout">로그아웃</a></li>
 						<li><a href="/member/mypage_form">마이페이지</a></li>
 						<!-- ROLE_ADMIN 권한만 AdminLTE에 가능하게 조건추가 -->
-						<c:if test="${session_levels eq 'ROLE_ADMIN' }">
+						<c:if test="${session_levels eq 'ROLE_ADMIN'}">
 							<li><a href="/admin">AdminLTE</a></li>
-						</c:if>	
+						</c:if>						
 					</c:when>
 					<c:otherwise>
 						<li><a href="/login_form">로그인</a></li>
 						<li><a href="/join_form">회원가입</a></li>
 					</c:otherwise>
-				</c:choose>
+				</c:choose>					
 				</ul>	
 				<nav>
 				<ul class="gnb clear">
@@ -96,9 +97,9 @@ if("${msgError}"!=""){
 					<li><a href="/home/board/board_list?board_type=notice&search_keyword=" class="openAll2">커뮤니티</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                            	<c:forEach var="boardTypeVO" items="${listBoardTypeVO}">                                                       
-                                <li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}&search_keyword=">${boardTypeVO.board_name}</a></li>
-                                </c:forEach>
+                            	<c:forEach var="boardTypeVO" items="${listBoardTypeVO}">
+	                            	<li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}&search_keyword=">${boardTypeVO.board_name}</a></li>
+                            	</c:forEach>
                             </ul>
                         </div>
 					</li>
