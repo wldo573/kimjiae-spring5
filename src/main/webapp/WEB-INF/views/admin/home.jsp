@@ -34,6 +34,7 @@
 
             <div class="card-tools">
               <!-- <span class="badge badge-danger">8 New Members</span> -->
+              
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
               </button>
@@ -47,8 +48,9 @@
             <ul class="users-list clearfix">
             <!-- 최신 등록한 회원정보 4개로 출력-->
             <c:forEach var="memberVO" items="${latestMembers}">
-	            <li style="cursor: pointer;" onclick="location.replace('/admin/member/nenber_view?user_id=${memberVO.user_id}')">
-	                <img src="/resources/admin/dist/img/default-150x150.png" alt="User Image">
+	            <li style="cursor: pointer;" onclick="location.replace('/admin/member/member_view?user_id=${memberVO.user_id}&page=1')">
+	                <!-- <img src="/resources/admin/dist/img/default-150x150.png" alt="User Image"> -->
+                	<img  style="width:120px;height:120px;" onerror="this.src='/resources/admin/dist/img/default-150x150.png'"src="/resources/profile/${memberVO.user_id}.png">
 	                <a class="users-list-name" href="#">${memberVO.user_name}</a>
 	                <span class="users-list-date">
 	                <fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${memberVO.reg_date}" />

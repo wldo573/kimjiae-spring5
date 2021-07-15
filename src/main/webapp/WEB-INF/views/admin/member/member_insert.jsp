@@ -38,15 +38,25 @@
           <form name="form_write" action="/admin/member/member_insert" method="post" enctype="multipart/form-data">
             <div class="card-body">
               
+              <!-- 사용자 프로필 이미지 등록 태그추가 -->
               <div class="form-group">
-              	<!-- 신규둥록시 ID중복체크필수:버튼이벤트, -->
-                <label for="user_id">사용자ID</label>
-                <button type="button" id="btn_id_check" type="button" class="btn btn-sm btn-secondary">중복체크</button>
+                <label for="exampleInputFile">사용자프로필</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input accept=".png" name="file" type="file" class="custom-file-input" id="file0">
+                    <label class="custom-file-label" for="file0">파일선택(*png이미지만가능)</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <!-- 신규등록시 ID중복체크필수:버튼이벤트 -->
+                <label for="user_id">사용자ID
+                <button id="btn_id_check" type="button" class="btn btn-sm btn-secondary">중복체크</button>
+                </label>
                 <input value="" name="user_id" type="text" class="form-control" id="user_id" placeholder="회원ID를 입력해 주세요" required>
               </div>
               <div class="form-group">
                 <label for="user_pw">암호</label>
-                <!-- 암호는 기존값이 필요없음. 이유는 값이 있으면 업데이트진행, 없으면 업데이트제외됨 -->
                 <input value="" name="user_pw" type="password" class="form-control" id="user_pw" placeholder="암호를 입력해 주세요" required>
               </div>
               <div class="form-group">
@@ -59,7 +69,7 @@
               </div>
               <div class="form-group">
                 <label for="point">포인트</label>
-                <input value="" name="point" type="number" class="form-control" id="point" placeholder="포인트를 입력해 주세요" required>
+                <input value="0" name="point" type="number" class="form-control" id="point" placeholder="포인트를 입력해 주세요" required>
               </div>
               <div class="form-group">
                 <label for="enabled">로그인여부</label>
@@ -79,7 +89,7 @@
             <!-- /.card-body -->
 
             <div class="card-footer text-right">
-              <button disabled type="submit" class="btn btn-primary" id="btn_insert">등록</button>
+              <button type="submit" class="btn btn-primary" id="btn_insert" disabled>등록</button>
               <button type="button" class="btn btn-default" id="btn_list">목록</button>
             </div>
             <input name="page" type="hidden" value="${pageVO.page}">
@@ -96,22 +106,30 @@
 
 <%@ include file="../include/footer.jsp" %>
 <!-- 관리자단은 jQuery코어가 하단 footer에 있기 때문에 여기에 위치합니다. -->
+<!-- 첨부파일명을 input태그디자인 안쪽에 집어넣는 확장프로그램 -->
+<script src="/resources/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- 위 첨부파일 확장프로그램 실행(아래-개발자가 처리) -->
+<script>
+	$(document).ready(function(){
+		bsCustomFileInput.init();
+	});
+</script>
 <script>
 $(document).ready(function(){
-	//RestAPI서버클래스 맛보기 에서 ID중복체크 메서드를 확인합니다.
+	//RestAPI서버클래스 맛보기 에서 ID중복체크 메서드를 확인 합니다.
 	//RestAPI클라이언트 맛보기
 	$("#btn_id_check").click(function(){
 		var user_id = $("#user_id").val();
 		//alert(user_id);
 		$.ajax({
-			type:"get",//입력,수정,삭제가 아니면 get방식
+			type:"get",//입력,수정,삭제 가 아니면 get방식
 			url:"/id_check?user_id="+user_id,//RestAPI서버(스프링클래스로제작)의 URL
-			dataType:"text",//결과값(0,1)을 받을 때, 데이터형을 text,json,xml중 선택
+			dataType:"text",//결과값(0,1)을 받을때, 데이터형을 text, json, xml중 선택
 			success:function(result){
 				alert(result);//디버그용
 				if(result==0){//중복ID가 없다면 정상진행
 					$("#btn_insert").attr("disabled",false);//등록버튼 활성화
-					alert("사용가능한 ID 입니다.");
+					alert("사용가능한 ID입니다.");
 				}
 				if(result==1){//중복ID가 있다면 진행중지
 					$("#btn_insert").attr("disabled",true);//등록버튼 비활성화
@@ -121,8 +139,10 @@ $(document).ready(function(){
 			error:function(){
 				alert('RestAPI서버가 작동하지 않습니다. 다음에 이용해 주세요!');
 			}
-		});	
+			
+		});
 	});
+	
 	var form_write = $("form[name='form_write']");
 	
 	$("#btn_list").click(function(){
